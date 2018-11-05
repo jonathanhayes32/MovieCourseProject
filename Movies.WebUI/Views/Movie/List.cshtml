@@ -1,0 +1,12 @@
+﻿@using Movies.Domain.Entities
+@model IEnumerable<Movie>
+    @{ 
+        ViewBag.Title = "Movies";
+    }
+@foreach (var m in Model)
+{
+    <div>
+        <h3>@m.Name</h3>
+        <h4>@m.Genre</h4>
+    </div>
+}

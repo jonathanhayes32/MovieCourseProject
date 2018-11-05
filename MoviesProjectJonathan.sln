@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Domain", "MoviesDomain\Movies.Domain.csproj", "{F705BBAD-63FC-4F9C-A805-F77D431CC1A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.WebUI", "Movies.WebUI\Movies.WebUI.csproj", "{F2FCBCF1-6DF4-447F-BED6-2C3EAB89B722}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Unit.Test", "Movies.Unit.Test\Movies.Unit.Test.csproj", "{A6FAC824-CD63-4B28-8DE2-A324E1D39F85}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F705BBAD-63FC-4F9C-A805-F77D431CC1A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F705BBAD-63FC-4F9C-A805-F77D431CC1A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F705BBAD-63FC-4F9C-A805-F77D431CC1A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F705BBAD-63FC-4F9C-A805-F77D431CC1A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2FCBCF1-6DF4-447F-BED6-2C3EAB89B722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2FCBCF1-6DF4-447F-BED6-2C3EAB89B722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2FCBCF1-6DF4-447F-BED6-2C3EAB89B722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2FCBCF1-6DF4-447F-BED6-2C3EAB89B722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6FAC824-CD63-4B28-8DE2-A324E1D39F85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6FAC824-CD63-4B28-8DE2-A324E1D39F85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6FAC824-CD63-4B28-8DE2-A324E1D39F85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6FAC824-CD63-4B28-8DE2-A324E1D39F85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
