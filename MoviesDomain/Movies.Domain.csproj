@@ -73,6 +73,8 @@
     <Compile Include="Abstract\ITheaterRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFDbContextTheater.cs" />
+    <Compile Include="Concrete\EFMovieRepository.cs" />
+    <Compile Include="Concrete\EFTheaterRepository.cs" />
     <Compile Include="Entities\Movie.cs" />
     <Compile Include="Entities\Theater.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
