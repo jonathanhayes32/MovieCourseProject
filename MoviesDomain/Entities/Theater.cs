@@ -13,5 +13,6 @@ namespace Movies.Domain.Entities
         public string AdressLine { get; set; }
         public string State { get; set; }
         public string City { get; set; }
+        public int ZipCode { get; set; }
     }
 }

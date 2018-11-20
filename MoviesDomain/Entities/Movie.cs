@@ -13,6 +13,6 @@ namespace Movies.Domain.Entities
         public string MovieRating { get; set; }
         public DateTime MovieReleaseDate { get; set; }
         public string Genre { get; set; }
-        public string BeenInTheatres { get; set; }
+        public string BeenInTheaters { get; set; }
     }
 }
