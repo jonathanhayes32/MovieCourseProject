@@ -16,10 +16,10 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace Movies.WebUI.DependencyResolution {
+    using Movies.Domain.Abstract;
+    using Movies.Domain.Concrete;
     using StructureMap;
-    using StructureMap.Configuration.DSL;
-    using StructureMap.Graph;
-	
+
     public class DefaultRegistry : Registry {
         #region Constructors and Destructors
 
@@ -30,6 +30,8 @@ namespace Movies.WebUI.DependencyResolution {
                     scan.WithDefaultConventions();
 					scan.With(new ControllerConvention());
                 });
+            For<IMovieRepository>().Use<EFMovieRepository>();
+            For<ITheaterRepository>().Use<EFTheaterRepository>();
             //For<IExample>().Use<Example>();
         }
 

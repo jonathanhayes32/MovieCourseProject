@@ -6,10 +6,10 @@ namespace Movies.Domain.Concrete
 {
     public class EFMovieRepository : IMovieRepository
     {
-        private EFDbContextTheater context = new EFDbContextTheater();
+        private EFDbContext context = new EFDbContext();
         public IEnumerable<Movie> Movies
         {
-            get { return context.Movies}
+            get { return context.Movies; }
         }
     }
 }
