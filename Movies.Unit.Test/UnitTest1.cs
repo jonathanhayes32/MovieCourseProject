@@ -6,10 +6,10 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Movies.Domain.Abstract;
-using Movies.Dmoain.Entities;
-using Movies.WebUI.Controlers;
-using SportsStore.WebUI.Models;
-using SportsStore.WebUI.HtmlHelpers;
+using Movies.Domain.Entities;
+using Movies.WebUI.Controllers;
+using Movies.WebUI.Models;
+
 
 namespace Movies.Unit.Test
 {
@@ -22,8 +22,8 @@ namespace Movies.Unit.Test
         {
 
             // Arrange      
-            Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m => m.Movies).Returns(new Movies[] {
+            Mock<IMovieRepository> mock = new Mock<IMovieRepository>();
+            mock.Setup(m => m.Movies).Returns(new Movie[] {
                 new Movie {MovieID = 1, Name = "M1"},
                 new Movie {MovieID = 2, Name = "M2"},
                 new Movie {MovieID = 3, Name = "M3"},
@@ -38,23 +38,23 @@ namespace Movies.Unit.Test
                 (IEnumerable<Movie>)controller.List(2).Model;
 
             // Assert       
-            Product[] prodArray = result.ToArray();
-            Assert.IsTrue(prodArray.Length == 2);
-            Assert.AreEqual(prodArray[0].Name, "M4");
-            Assert.AreEqual(prodArray[1].Name, "M5");
+            Movie[] MovieArray = result.ToArray();
+            Assert.IsTrue(MovieArray.Length == 2);
+            Assert.AreEqual(MovieArray[0].Name, "M4");
+            Assert.AreEqual(MovieArray[1].Name, "M5");
         }
         [TestMethod]
         public void Can_Paginate1()
         {
 
             // Arrange      
-            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            Mock<ITheaterRepository> mock = new Mock<ITheaterRepository>();
             mock.Setup(t => t.Theaters).Returns(new Theater[] {
-                new Theater {TheaterID = 1, Name = "T1"},
-                new Theater {TheaterID = 2, Name = "T2"},
-                new Theater {TheaterID = 3, Name = "T3"},
-                new Theater {TheaterID = 4, Name = "T4"},
-                new Theater {MovieID = 5, Name = "T5"}
+                new Theater {TheaterID = 1, TheaterName = "T1"},
+                new Theater {TheaterID = 2, TheaterName = "T2"},
+                new Theater {TheaterID = 3, TheaterName = "T3"},
+                new Theater {TheaterID = 4, TheaterName = "T4"},
+                new Theater {TheaterID = 5, TheaterName = "T5"}
             });
 
             TheaterController controller = new TheaterController(mock.Object); controller.PageSize = 3;
@@ -64,10 +64,10 @@ namespace Movies.Unit.Test
                 (IEnumerable<Theater>)controller.List(2).Model;
 
             // Assert       
-            Product[] prodArray = result.ToArray();
-            Assert.IsTrue(prodArray.Length == 2);
-            Assert.AreEqual(prodArray[0].Name, "T4");
-            Assert.AreEqual(prodArray[1].Name, "T5");
+            Theater[] TheaterArray = result.ToArray();
+            Assert.IsTrue(TheaterArray.Length == 2);
+            Assert.AreEqual(TheaterArray[0].TheaterName, "T4");
+            Assert.AreEqual(TheaterArray[1].TheaterName, "T5");
         }
         [TestMethod]
         public void Can_Generate_Page_Links()

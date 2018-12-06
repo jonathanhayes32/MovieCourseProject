@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Movies.Domain.Abstract;
 using Movies.Domain.Entities;
+using Movies.WebUI.Models;
 
 namespace Movies.WebUI.Controllers
 {
