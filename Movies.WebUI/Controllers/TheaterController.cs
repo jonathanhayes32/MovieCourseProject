@@ -9,7 +9,7 @@ using Movies.Domain.Entities;
 namespace Movies.WebUI.Controllers
 {
     public class TheaterController : Controller
-    { 
+    {
         private ITheaterRepository repository;
         public int PageSize = 4;
         public TheaterController(ITheaterRepository theaterRepository)
@@ -18,11 +18,22 @@ namespace Movies.WebUI.Controllers
         }
         public ViewResult List(int page = 1)
         {
-            return View(repository.Theaters
-                .OrderBy(t => t.TheaterID)
-                .Skip ((page - 1) * PageSize)
-                .Take(PageSize));
+            TheatersListViewModel model = new TheatersListViewModel
+            {
+                Theaters = repository.Theaters
+               .OrderBy(p => p.TheaterID)
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = repository.Theaters.Count()
+                }
+            };
+            return View(model);
+
+
         }
-        
     }
 }
