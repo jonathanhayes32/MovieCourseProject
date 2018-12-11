@@ -1,18 +1,14 @@
 ﻿@model Movies.WebUI.Models.MoviesListViewModel
 
-@{ ViewBag.Title = "Movies"; }
+@{
+    ViewBag.Title = "Movies";
+}
 
 @foreach (var m in Model.Movies)
 
-{
-    <div class="well">    
-    <h3>          
-    <strong>@m.Name</strong>      
-    <span class="pull-right label label-primary">@m.Movie.ToString("c")</span>  
-        </h3>   
-    <span class="lead"> @m.Description</span>  
-    </div>}
-
-<div class="btn-group pull-right">  
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
- </div>
+    <div>   
+    <h3>@p.Name</h3>   
+    @p.Description     
+    <h4>@p.MovieReleaseDate.ToString("c")</h4>  
+        </div> 
+}

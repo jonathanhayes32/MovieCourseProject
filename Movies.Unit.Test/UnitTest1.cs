@@ -34,8 +34,7 @@ namespace Movies.Unit.Test
             MovieController controller = new MovieController(mock.Object); controller.PageSize = 3;
 
             // Act   
-            IEnumerable<Movie> result =
-                (IEnumerable<Movie>)controller.List(2).Model;
+            MoviesListViewModel result = (MoviesListViewModel)controller.List(2).Model;
 
             // Assert       
             Movie[] MovieArray = result.ToArray();
@@ -60,8 +59,7 @@ namespace Movies.Unit.Test
             TheaterController controller = new TheaterController(mock.Object); controller.PageSize = 3;
 
             // Act   
-            IEnumerable<Theater> result =
-                (IEnumerable<Theater>)controller.List(2).Model;
+            TheatersListViewModel result = (TheatersListViewModel)controller.List(2).Model;
 
             // Assert       
             Theater[] TheaterArray = result.ToArray();
