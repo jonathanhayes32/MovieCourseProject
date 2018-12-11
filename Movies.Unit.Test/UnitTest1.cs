@@ -91,10 +91,66 @@ namespace Movies.Unit.Test
             // Act       
             MvcHtmlString result = myHelper.PageLinks(pagingInfo, pageUrlDelegate);
             // Assert    
-            Assert.AreEqual(@"<a class=""btn btn-default"" href=""Page1"">1</a>"    
-+ @"<a class=""btn btn-default btn-primary selected"" href=""Page2"">2</a>"         
-+ @"<a class=""btn btn-default"" href=""Page3"">3</a>",         
-result.ToString()); 
+            Assert.AreEqual(@"<a class=""btn btn-default"" href=""Page1"">1</a>"
++ @"<a class=""btn btn-default btn-primary selected"" href=""Page2"">2</a>"
++ @"<a class=""btn btn-default"" href=""Page3"">3</a>",
+result.ToString());
+        }
+        [TestMethod]
+        public void Can_Send_Pagination_View_Model()
+        {
+
+            // Arrange 
+            Mock<IMovieRepository> mock = new Mock<IMovieRepository>();
+            mock.Setup(m => m.Movies).Returns(new Movie[] {
+                    new Movie {MovieID = 1, Name = "M1"},
+                    new Movie {MovieID = 2, Name = "M2"},
+                    new Movie {MovieID = 3, Name = "M3"},
+                    new Movie {MovieID = 4, Name = "M4"},
+                    new Product {MovieID = 5, Name = "M5"}
+                });
+
+            // Arrange 
+            MovieController controller = new MovieController(mock.Object);
+            controller.PageSize = 3;
+
+            // Act   
+            MoviesListViewModel result = (MoviesListViewModel)controller.List(2).Model;
+
+            // Assert  
+            PagingInfo pageInfo = result.PagingInfo;
+            Assert.AreEqual(pageInfo.CurrentPage, 2);
+            Assert.AreEqual(pageInfo.ItemsPerPage, 3);
+            Assert.AreEqual(pageInfo.TotalItems, 5);
+            Assert.AreEqual(pageInfo.TotalPages, 2);
+        }
+        [TestMethod]
+        public void Can_Send_Pagination_View_Model1()
+        {
+
+            // Arrange 
+            Mock<ITheaterRepository> mock = new Mock<ITheaterRepository>();
+            mock.Setup(t => t.Theaters).Returns(new Theater[] {
+                new Theater {TheaterID = 1, TheaterName = "T1"},
+                new Theater {TheaterID = 2, TheaterName = "T2"},
+                new Theater {TheaterID = 3, TheaterName = "T3"},
+                new Theater {TheaterID = 4, TheaterName = "T4"},
+                new Theater {TheaterID = 5, TheaterName = "T5"}
+            });
+
+            // Arrange 
+            TheaterController controller = new TheaterController(mock.Object);
+            controller.PageSize = 3;
+
+            // Act   
+            TheatersListViewModel result = (TheatersListViewModel)controller.List(2).Model;
+
+            // Assert  
+            PagingInfo pageInfo = result.PagingInfo;
+            Assert.AreEqual(pageInfo.CurrentPage, 2);
+            Assert.AreEqual(pageInfo.ItemsPerPage, 3);
+            Assert.AreEqual(pageInfo.TotalItems, 5);
+            Assert.AreEqual(pageInfo.TotalPages, 2);
         }
     }
 }
