@@ -12,3 +12,8 @@
     <h4>@p.MovieReleaseDate.ToString("c")</h4>  
         </div> 
 }
+    <div>  
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x}))
+    </div>
+ 
+

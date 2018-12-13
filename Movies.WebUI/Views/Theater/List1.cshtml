@@ -1,12 +1,15 @@
-﻿@using Movies.Domain.Entities
-@model IEnumerable<Theater>
+﻿@model  Movies.WebUI.Models.TheatersListViewModel
 @{
-    ViewBag.Title = "Theatres";
+    ViewBag.Title = "Theaters";
 }
-@foreach (var t in Model)
+@foreach (var t in Model.Theaters)
 {
     <div>
         <h3>@t.TheaterName</h3>
-        <h4>@t.State</h4>
+        @t.description
+        <h4>@t.State.ToString</h4>
     </div>
 }
+<div>
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+</div>
